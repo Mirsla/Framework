@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: springboot-rocketmq
+server:
+  port: 8080
+
+rocketmq:
+  producer:
+    isOnOff: on #该应用是否启用生产者
+    groupName: ${spring.application.name} #发送同一类消息的设置为同一个group，保证唯一,默认不需要设置，rocketmq会使用ip@pid(pid代表jvm名字)作为唯一标示
+    namesrvAddr: 192.168.123.139:9876 #mq的nameserver地址
+    maxMessageSize: 4096 #消息最大长度 默认1024*4(4M)
+    sendMsgTime: 3000 #发送消息超时时间,默认3000
+    retryTimesWhenSendFiled: 2 #发送消息失败重试次数，默认2
+
+  consumer:
+    isOnOff: on ##该应用是否启用消费者
+    groupName: ${spring.application.name}
+    namesrvAddr: 192.168.123.139:9876
+    topics: DemoTopic;
+    consumeThreadMin: 20
+    consumeThreadMax: 64
+    consumeMessageBatchMaxSize: 1
