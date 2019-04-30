@@ -12,6 +12,7 @@ rocketmq:
     maxMessageSize: 4096 #消息最大长度 默认1024*4(4M)
     sendMsgTime: 3000 #发送消息超时时间,默认3000
     retryTimesWhenSendFiled: 2 #发送消息失败重试次数，默认2
+    name-server-address: 192.168.123.139:9876
 
   consumer:
     isOnOff: on ##该应用是否启用消费者
