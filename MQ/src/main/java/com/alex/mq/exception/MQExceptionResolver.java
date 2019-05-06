@@ -3,12 +3,12 @@ package com.alex.mq.exception;
 import org.apache.rocketmq.common.message.Message;
 
 /**
- * @author: Mirsla
+ * @author: Alex
  * @descripTion: MQ消息异常统一处理类
  * @date: Created in  16:27 2019/4/28
  * @modified By:
  */
-public abstract class MqExceptionResolver {
+public abstract class MQExceptionResolver {
 
     protected void resolverSendException(String key, Message message, Exception e) {
         String msg = e != null ? e.getMessage() : "";

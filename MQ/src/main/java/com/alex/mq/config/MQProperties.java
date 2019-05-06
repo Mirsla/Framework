@@ -2,14 +2,16 @@ package com.alex.mq.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 
 /**
- * @author: Mirsla
+ * @author: Alex
  * @descripTion:
  * @date: Created in  17:06 2019/4/28
  * @modified By:
  */
 @Data
+@PropertySource("classpath:application.yml")
 @ConfigurationProperties(prefix = "spring.rocketmq")
 public class MQProperties {
     /**
