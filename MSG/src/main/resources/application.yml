@@ -1,0 +1,10 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: springboot-rocketmq
+  rocketmq:
+    group-name: ${spring.application.name}
+    name-server-address: 192.168.123.139:9876
+    producer-group: ${spring.application.name}
