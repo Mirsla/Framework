@@ -7,6 +7,8 @@ import org.springframework.util.Assert;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author: Alex
@@ -55,5 +57,30 @@ public abstract class AbstractMQConsumer<T> {
             // 如果没有定义泛型，解析为Object
             return Object.class;
         }
+    }
+
+    protected Map<String, Object> parseExtParam(MessageExt message) {
+        Map<String, Object> extMap = new HashMap<>();
+
+        // parse message property
+        extMap.put(MQConst.PROPERTY_TOPIC, message.getTopic());
+        extMap.putAll(message.getProperties());
+
+        // parse messageExt property
+        extMap.put(MQConst.PROPERTY_EXT_BORN_HOST, message.getBornHost());
+        extMap.put(MQConst.PROPERTY_EXT_BORN_TIMESTAMP, message.getBornTimestamp());
+        extMap.put(MQConst.PROPERTY_EXT_COMMIT_LOG_OFFSET, message.getCommitLogOffset());
+        extMap.put(MQConst.PROPERTY_EXT_MSG_ID, message.getMsgId());
+        extMap.put(MQConst.PROPERTY_EXT_PREPARED_TRANSACTION_OFFSET, message.getPreparedTransactionOffset());
+        extMap.put(MQConst.PROPERTY_EXT_QUEUE_ID, message.getQueueId());
+        extMap.put(MQConst.PROPERTY_EXT_QUEUE_OFFSET, message.getQueueOffset());
+        extMap.put(MQConst.PROPERTY_EXT_RECONSUME_TIMES, message.getReconsumeTimes());
+        extMap.put(MQConst.PROPERTY_EXT_STORE_HOST, message.getStoreHost());
+        extMap.put(MQConst.PROPERTY_EXT_STORE_SIZE, message.getStoreSize());
+        extMap.put(MQConst.PROPERTY_EXT_STORE_TIMESTAMP, message.getStoreTimestamp());
+        extMap.put(MQConst.PROPERTY_EXT_SYS_FLAG, message.getSysFlag());
+        extMap.put(MQConst.PROPERTY_EXT_BODY_CRC, message.getBodyCRC());
+
+        return extMap;
     }
 }

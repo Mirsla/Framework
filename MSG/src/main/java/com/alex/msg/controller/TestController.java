@@ -1,7 +1,6 @@
-package com.alex.controller;
+package com.alex.msg.controller;
 
 import com.alex.mq.core.MQProducer;
-import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

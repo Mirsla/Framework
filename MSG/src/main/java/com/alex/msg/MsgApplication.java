@@ -1,4 +1,4 @@
-package com.alex;
+package com.alex.msg;
 
 import com.alex.mq.annotation.EnableMQConfiguration;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @modified By:
  */
 @SpringBootApplication  //开启自动配置
-@ComponentScan(value = {"com.alex.controller", "com.alex.mq.config","com.alex.mq.core"})
+@ComponentScan(value = {"com.alex.msg.controller", "com.alex.mq.config", "com.alex.mq.core", "com.alex.msg.mq"})
 @EnableMQConfiguration
 public class MsgApplication {
 
